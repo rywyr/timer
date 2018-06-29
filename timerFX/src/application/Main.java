@@ -5,6 +5,8 @@ import javafx.animation.Timeline;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.event.EventTarget;
+import javafx.event.EventType;
 import javafx.geometry.Pos;
 import javafx.stage.Stage;
 import javafx.stage.StageBuilder;
@@ -12,6 +14,7 @@ import javafx.util.Duration;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.LabelBuilder;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.scene.layout.VBoxBuilder;
 import javafx.scene.text.Font;
@@ -34,6 +37,7 @@ public class Main extends Application {
 	  Label label = LabelBuilder.create().text(Timer.timer()).prefWidth(2000).font(font).prefHeight(18).alignment(Pos.TOP_CENTER).build(); // ラベルを作成
 	  VBox root = VBoxBuilder.create().spacing( 10 ).children(label).build(); //縦方向一列に配置するレイアウト
 	  
+	  //タイマーイベント
 	  Timeline timer = new Timeline(new KeyFrame(Duration.millis(1), new EventHandler<ActionEvent>(){ // イベント要素であるタイマーを生成
 	    @Override
 	    public void handle(@SuppressWarnings("unused") ActionEvent event) {
@@ -42,6 +46,8 @@ public class Main extends Application {
 	  }));
 	  timer.setCycleCount(Timeline.INDEFINITE);
 	  timer.play();//タイマーを開始
+	  
+	  
 	  
 	  try {
 	    Scene scene = new Scene(root,500,40); // シーンを作成
@@ -54,6 +60,14 @@ public class Main extends Application {
 		e.printStackTrace();
 	  }
 	}
+  
+    EventHandler<MouseEvent> mouseEventHandler = new EventHandler<MouseEvent>() {
+      public void handle(MouseEvent e) {
+        Object source = e.getSource();
+        EventTarget target = e.getTarget();
+        // TODO 
+      }
+    };
 	
 	/**
 	 * メインクラス.
