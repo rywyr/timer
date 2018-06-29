@@ -27,7 +27,7 @@ public class Main extends Application {
   
   @SuppressWarnings("static-access")
   @Override
-	public void start(Stage primaryStage) {
+	public void start(Stage primaryStage) { 
     
       Font font = new Font("MS UI Gothic", 32); //フォントを作成 //$NON-NLS-1$
 	  
